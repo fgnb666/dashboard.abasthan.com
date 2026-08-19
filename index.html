@@ -3,720 +3,761 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Network - Protect Earth</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Discord Bot · AURORA</title>
+    <!-- Google Font + Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #2e7d32;
-            --secondary: #4caf50;
-            --accent: #8bc34a;
-            --light: #e8f5e9;
-            --dark: #1b5e20;
-            --text: #333333;
-            --white: #ffffff;
         }
 
         body {
-            background-color: var(--light);
-            color: var(--text);
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            background: #f2f4fa;
+            color: #1a1e2b;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
         }
 
-        header {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        /* main card – soft glass‑morphism */
+        .app-wrapper {
+            max-width: 1280px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.80);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 3rem;
+            padding: 2.2rem 2.5rem;
+            box-shadow: 0 30px 60px -20px rgba(0, 20, 40, 0.25), 0 6px 18px rgba(0,0,0,0.02);
+            border: 1px solid rgba(255,255,255,0.5);
         }
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nav-container {
+        /* ----- top navigation ----- */
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        .logo i {
-            font-size: 2rem;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 2rem;
-        }
-
-        nav ul li a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-
-        nav ul li a:hover {
-            color: var(--accent);
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
+            flex-wrap: wrap;
             margin-bottom: 2rem;
         }
 
-        .btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        section {
-            padding: 5rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-            border-radius: 2px;
-        }
-
-        .section-title p {
-            color: var(--text);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+        .logo-area {
+            display: flex;
             align-items: center;
+            gap: 12px;
         }
 
-        .about-img {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .about-img:hover img {
-            transform: scale(1.05);
-        }
-
-        .about-text h3 {
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: #5865f2;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
+            color: white;
+            box-shadow: 0 6px 12px rgba(88, 101, 242, 0.25);
         }
 
-        .about-text p {
-            margin-bottom: 1.5rem;
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: -0.5px;
+        }
+        .logo-text span {
+            color: #5865f2;
         }
 
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+        .badge-online {
+            background: #eef2f9;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #1a1e2b;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: #2bcc7e;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* ----- hero / stats row ----- */
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffffcc;
+            backdrop-filter: blur(4px);
+            border-radius: 2rem;
+            padding: 1.2rem 2rem;
+            margin-bottom: 2.4rem;
+            border: 1px solid rgba(255,255,255,0.7);
+        }
+
+        .hero-left h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+        .hero-left p {
+            color: #4f566b;
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        .stats-group {
+            display: flex;
+            gap: 2.2rem;
+            flex-wrap: wrap;
         }
 
         .stat-item {
-            text-align: center;
-            padding: 2rem 1rem;
-            background-color: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .stat-item i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .stat-item h3 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-item p {
-            color: var(--text);
-        }
-
-        .initiatives {
-            background-color: var(--white);
-        }
-
-        .initiatives-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .initiative-card {
-            background-color: var(--light);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .initiative-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .initiative-img {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .initiative-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .initiative-card:hover .initiative-img img {
-            transform: scale(1.1);
-        }
-
-        .initiative-content {
-            padding: 1.5rem;
-        }
-
-        .initiative-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .initiative-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .cta {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            text-align: center;
-            padding: 5rem 0;
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta .btn {
-            background-color: var(--white);
-            color: var(--primary);
-        }
-
-        .cta .btn:hover {
-            background-color: var(--accent);
-            color: var(--white);
-        }
-
-        footer {
-            background-color: var(--dark);
-            color: var(--white);
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent);
-        }
-
-        .footer-column p {
-            margin-bottom: 1rem;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links li a {
-            color: var(--light);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links li a:hover {
-            color: var(--accent);
-            padding-left: 5px;
-        }
-
-        .social-links {
             display: flex;
-            gap: 1rem;
+            align-items: baseline;
+            gap: 6px;
         }
 
-        .social-links a {
-            display: inline-flex;
+        .stat-number {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #1a1e2b;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #5a6178;
+        }
+
+        /* ----- main grid: 2 columns ----- */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1.8fr 1.2fr;
+            gap: 2rem;
+        }
+
+        /* ----- left panel (commands + log) ----- */
+        .commands-panel {
+            background: #ffffff;
+            border-radius: 2rem;
+            padding: 1.6rem 1.8rem;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.02);
+            border: 1px solid #eef0f5;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #1a1e2b;
+        }
+
+        .panel-header i {
+            color: #5865f2;
+            font-size: 1.3rem;
+        }
+
+        .cmd-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .cmd-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f7f9fe;
+            padding: 0.6rem 1rem;
+            border-radius: 1.2rem;
+            transition: background 0.15s;
+        }
+
+        .cmd-row:hover {
+            background: #eef2fd;
+        }
+
+        .cmd-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .cmd-tag {
+            font-family: 'Inter', monospace;
+            font-weight: 600;
+            font-size: 0.8rem;
+            background: #e4e9f5;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            color: #2d3348;
+        }
+
+        .cmd-desc {
+            font-size: 0.85rem;
+            color: #3f455c;
+        }
+
+        .cmd-btn {
+            background: transparent;
+            border: 1px solid #d0d7e6;
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            color: #2d3348;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+
+        .cmd-btn:hover {
+            background: #5865f2;
+            border-color: #5865f2;
+            color: white;
+            box-shadow: 0 4px 10px rgba(88,101,242,0.2);
+        }
+
+        /* log area inside left panel */
+        .log-box {
+            margin-top: 1.8rem;
+            background: #f7f9fe;
+            border-radius: 1.4rem;
+            padding: 1rem 1.2rem;
+        }
+
+        .log-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #4b526b;
+            margin-bottom: 8px;
+        }
+
+        .clear-log {
+            background: none;
+            border: none;
+            color: #7c84a3;
+            cursor: pointer;
+            font-size: 0.7rem;
+        }
+        .clear-log:hover {
+            color: #1a1e2b;
+        }
+
+        .log-container {
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 0.6rem 0.8rem;
+            height: 180px;
+            overflow-y: auto;
+            font-size: 0.75rem;
+            font-family: 'Inter', monospace;
+        }
+
+        .log-line {
+            padding: 5px 0;
+            border-bottom: 1px solid #edeff4;
+            color: #262c3f;
+        }
+
+        .log-time {
+            color: #5865f2;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        /* ----- right panel (controls) ----- */
+        .controls-panel {
+            background: #ffffff;
+            border-radius: 2rem;
+            padding: 1.6rem 1.8rem;
+            border: 1px solid #eef0f5;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.02);
+        }
+
+        .control-card {
+            background: #f7f9fe;
+            border-radius: 1.4rem;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 4px;
+            -webkit-appearance: none;
+            background: #d6ddee;
+            border-radius: 8px;
+        }
+        input[type="range"]:focus {
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #5865f2;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(88,101,242,0.25);
+        }
+
+        .toggle-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .toggle-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 22px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider-round {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #d0d7e6;
+            border-radius: 34px;
+            transition: 0.2s;
+        }
+        .slider-round::before {
+            content: "";
+            position: absolute;
+            height: 16px;
+            width: 16px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+        input:checked + .slider-round {
+            background-color: #5865f2;
+        }
+        input:checked + .slider-round::before {
+            transform: translateX(22px);
+        }
+
+        .action-btn {
+            width: 100%;
+            background: #f0f3fc;
+            border: none;
+            padding: 0.7rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            color: #1a1e2b;
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--white);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
+            gap: 8px;
             cursor: pointer;
+            transition: 0.15s;
+            font-size: 0.85rem;
+            margin-top: 6px;
         }
 
-        @media (max-width: 992px) {
-            .about-content {
+        .action-btn:hover {
+            background: #5865f2;
+            color: white;
+            box-shadow: 0 4px 14px rgba(88,101,242,0.2);
+        }
+
+        .action-btn i {
+            font-size: 0.9rem;
+        }
+
+        .action-btn.outline {
+            background: transparent;
+            border: 1px solid #d6ddee;
+        }
+        .action-btn.outline:hover {
+            background: #eef2fd;
+            border-color: #5865f2;
+            color: #1a1e2b;
+        }
+
+        .progress-section {
+            margin-top: 1rem;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #3d445d;
+        }
+
+        progress {
+            width: 100%;
+            height: 6px;
+            border-radius: 10px;
+            background: #e4e9f5;
+            border: none;
+            margin-top: 6px;
+        }
+        progress::-webkit-progress-bar {
+            background: #e4e9f5;
+            border-radius: 10px;
+        }
+        progress::-webkit-progress-value {
+            background: #5865f2;
+            border-radius: 10px;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #7b839e;
+            margin-top: 2rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid #edeff4;
+        }
+
+        /* responsive */
+        @media (max-width: 880px) {
+            .dashboard-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .initiatives-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .app-wrapper {
+                padding: 1.5rem;
             }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--primary);
+            .hero-stats {
                 flex-direction: column;
-                padding: 1rem 0;
-                text-align: center;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                align-items: flex-start;
+                gap: 1rem;
             }
-            
-            nav ul.active {
-                display: flex;
-            }
-            
-            nav ul li {
-                margin: 0;
-                padding: 0.8rem 0;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats {
-                grid-template-columns: 1fr;
+            .stats-group {
+                gap: 1.2rem;
             }
         }
-
-        /* Animation for stats counter */
-        .counter {
-            transition: all 0.5s ease;
+        @media (max-width: 480px) {
+            .navbar {
+                flex-direction: column;
+                align-items: start;
+                gap: 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container nav-container">
-            <div class="logo">
-                <i class="fas fa-seedling"></i>
-                <span>Green Network</span>
-            </div>
-            <nav>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#initiatives">Initiatives</a></li>
-                    <li><a href="#get-involved">Get Involved</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Protect Our Planet, Preserve Our Future</h1>
-            <p>Join the global movement to create a sustainable world through conservation, education, and community action.</p>
-            <a href="#get-involved" class="btn">Join Our Network</a>
+<div class="app-wrapper">
+    <!-- navbar -->
+    <div class="navbar">
+        <div class="logo-area">
+            <div class="logo-icon"><i class="fab fa-discord"></i></div>
+            <div class="logo-text">AURORA<span>.</span></div>
         </div>
-    </section>
+        <div class="badge-online">
+            <span class="dot"></span> Online · Gateway v3
+        </div>
+    </div>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Green Network</h2>
-                <p>We are a global community dedicated to environmental protection and sustainable development.</p>
+    <!-- hero + stats -->
+    <div class="hero-stats">
+        <div class="hero-left">
+            <h2>✨ smart moderation & music</h2>
+            <p>interactive demo – try commands or adjust settings</p>
+        </div>
+        <div class="stats-group">
+            <div class="stat-item">
+                <span class="stat-number" id="guildCount">413</span>
+                <span class="stat-label">servers</span>
             </div>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team planting trees">
-                </div>
-                <div class="about-text">
-                    <h3>Our Mission</h3>
-                    <p>Green Network is committed to creating a sustainable future by protecting natural ecosystems, promoting renewable energy, and empowering communities to take environmental action.</p>
-                    <p>Founded in 2010, we've grown from a small grassroots organization to an international network with over 50,000 members across 120 countries.</p>
-                    <p>Our approach combines scientific research, community engagement, and policy advocacy to address the most pressing environmental challenges of our time.</p>
-                    <a href="#" class="btn">Learn More</a>
-                </div>
+            <div class="stat-item">
+                <span class="stat-number" id="userCount">78.2K</span>
+                <span class="stat-label">users</span>
             </div>
-            <div class="stats">
-                <div class="stat-item">
-                    <i class="fas fa-tree"></i>
-                    <h3 class="counter" data-target="2500000">0</h3>
-                    <p>Trees Planted</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-users"></i>
-                    <h3 class="counter" data-target="50000">0</h3>
-                    <p>Active Members</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-globe-americas"></i>
-                    <h3 class="counter" data-target="120">0</h3>
-                    <p>Countries Reached</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-recycle"></i>
-                    <h3 class="counter" data-target="1500">0</h3>
-                    <p>Cleanup Projects</p>
-                </div>
+            <div class="stat-item">
+                <span class="stat-number">v2.4</span>
+                <span class="stat-label">stable</span>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Initiatives Section -->
-    <section class="initiatives" id="initiatives">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Initiatives</h2>
-                <p>Discover the key programs and projects we're implementing to protect our planet.</p>
+    <!-- two columns -->
+    <div class="dashboard-grid">
+        <!-- left: commands + log -->
+        <div class="commands-panel">
+            <div class="panel-header">
+                <i class="fas fa-terminal"></i> Slash Commands
             </div>
-            <div class="initiatives-grid">
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://dialogue.earth/content/uploads/2021/04/lessons-from-the-rush-to-reforest-china-dialogue-2400x1599.jpg" alt="Reforestation">
+            <div class="cmd-list">
+                <div class="cmd-row">
+                    <div class="cmd-left">
+                        <span class="cmd-tag">/ping</span>
+                        <span class="cmd-desc">check latency</span>
                     </div>
-                    <div class="initiative-content">
-                        <h3>Global Reforestation</h3>
-                        <p>Planting millions of trees worldwide to restore ecosystems, combat climate change, and protect biodiversity.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
+                    <button class="cmd-btn" data-cmd="/ping">run</button>
                 </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Ocean Conservation">
+                <div class="cmd-row">
+                    <div class="cmd-left">
+                        <span class="cmd-tag">/quote</span>
+                        <span class="cmd-desc">inspirational message</span>
                     </div>
-                    <div class="initiative-content">
-                        <h3>Ocean Conservation</h3>
-                        <p>Protecting marine ecosystems, reducing plastic pollution, and promoting sustainable fishing practices.</p>
-                        <a href="#" class="btn">Learn More</a>
-                    </div>
+                    <button class="cmd-btn" data-cmd="/quote">run</button>
                 </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Renewable Energy">
+                <div class="cmd-row">
+                    <div class="cmd-left">
+                        <span class="cmd-tag">/profile</span>
+                        <span class="cmd-desc">user info (demo)</span>
                     </div>
-                    <div class="initiative-content">
-                        <h3>Renewable Energy</h3>
-                        <p>Promoting solar, wind, and other clean energy sources to reduce dependence on fossil fuels.</p>
-                        <a href="#" class="btn">Learn More</a>
+                    <button class="cmd-btn" data-cmd="/profile">run</button>
+                </div>
+                <div class="cmd-row">
+                    <div class="cmd-left">
+                        <span class="cmd-tag">/poll</span>
+                        <span class="cmd-desc">create quick poll</span>
                     </div>
+                    <button class="cmd-btn" data-cmd="/poll">run</button>
+                </div>
+                <div class="cmd-row">
+                    <div class="cmd-left">
+                        <span class="cmd-tag">/help</span>
+                        <span class="cmd-desc">show all commands</span>
+                    </div>
+                    <button class="cmd-btn" data-cmd="/help">run</button>
+                </div>
+            </div>
+
+            <!-- log area -->
+            <div class="log-box">
+                <div class="log-header">
+                    <span><i class="far fa-clock"></i> live activity</span>
+                    <button class="clear-log" id="clearLogBtn"><i class="fas fa-eraser"></i> clear</button>
+                </div>
+                <div class="log-container" id="logContainer">
+                    <div class="log-line"><span class="log-time">[system]</span> Aurora ready — slash commands simulated</div>
+                    <div class="log-line"><span class="log-time">[info]</span> dashboard loaded · interact with buttons</div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="cta" id="get-involved">
-        <div class="container">
-            <h2>Join Our Global Movement</h2>
-            <p>Together, we can create a sustainable future for generations to come. Every action counts, no matter how small.</p>
-            <a href="#" class="btn">Become a Member</a>
-        </div>
-    </section>
+        <!-- right: controls -->
+        <div class="controls-panel">
+            <div class="panel-header" style="margin-bottom: 1rem;">
+                <i class="fas fa-sliders-h"></i> Live Controls
+            </div>
 
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Green Network</h3>
-                    <p>We are dedicated to protecting our planet through collaborative action, education, and sustainable solutions.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+            <div class="control-card">
+                <div class="slider-label">
+                    <span><i class="fas fa-volume-up"></i> Music volume</span>
+                    <span id="volDisplay">62%</span>
                 </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#initiatives">Initiatives</a></li>
-                        <li><a href="#get-involved">Get Involved</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
+                <input type="range" id="volumeSlider" min="0" max="100" value="62">
+            </div>
+
+            <div class="control-card">
+                <div class="toggle-row">
+                    <span><i class="fas fa-greeting"></i> Auto‑greet</span>
+                    <label class="switch">
+                        <input type="checkbox" id="welcomeToggle" checked>
+                        <span class="slider-round"></span>
+                    </label>
                 </div>
-                <div class="footer-column">
-                    <h3>Our Programs</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Reforestation</a></li>
-                        <li><a href="#">Ocean Cleanup</a></li>
-                        <li><a href="#">Wildlife Protection</a></li>
-                        <li><a href="#">Climate Education</a></li>
-                        <li><a href="#">Sustainable Agriculture</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Copper Creek Drive, New York</p>
-                    <p><i class="fas fa-phone"></i> +1 (312) 171-0771</p>
-                    <p><i class="fas fa-envelope"></i> support@greennetwork.org</p>
+                <div class="toggle-row">
+                    <span><i class="fas fa-robot"></i> AI responses</span>
+                    <label class="switch">
+                        <input type="checkbox" id="aiToggle">
+                        <span class="slider-round"></span>
+                    </label>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Green Network. All rights reserved.</p>
+
+            <button class="action-btn" id="randomCmdBtn"><i class="fas fa-dice"></i> random command</button>
+            <button class="action-btn outline" id="simulateJoinBtn"><i class="fas fa-user-plus"></i> simulate join</button>
+
+            <div class="progress-section">
+                <div class="progress-label">
+                    <span><i class="fas fa-bolt"></i> activity score</span>
+                    <span id="scoreDisplay">37</span>
+                </div>
+                <progress id="activityProgress" value="37" max="100"></progress>
             </div>
         </div>
-    </footer>
+    </div>
 
-    <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('active');
-        });
+    <div class="footer-note">
+        <i class="fab fa-discord"></i> Aurora · demo interface · all interactions are front‑end simulated
+    </div>
+</div>
 
-        // Counter Animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            const speed = 200; // The lower the slower
-            
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                
-                const inc = target / speed;
-                
-                if(count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = target;
-                }
-            });
+<script>
+    // ----- LOGGING -----
+    const logContainer = document.getElementById('logContainer');
+    const clearBtn = document.getElementById('clearLogBtn');
+
+    function addLog(message, type = 'info') {
+        const line = document.createElement('div');
+        line.className = 'log-line';
+        const now = new Date();
+        const t = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
+        let icon = '📡';
+        if (type === 'cmd') icon = '⚡';
+        else if (type === 'success') icon = '✅';
+        else if (type === 'system') icon = '🖥️';
+        line.innerHTML = `<span class="log-time">[${t}]</span> ${icon} ${message}`;
+        logContainer.appendChild(line);
+        logContainer.scrollTop = logContainer.scrollHeight;
+        while (logContainer.children.length > 55) logContainer.removeChild(logContainer.firstChild);
+    }
+
+    clearBtn.addEventListener('click', () => {
+        logContainer.innerHTML = '';
+        addLog('log cleared — ready', 'system');
+    });
+
+    // ----- COMMAND SIMULATION -----
+    let cmdCounter = 0;
+    function runCommand(cmd) {
+        cmdCounter++;
+        addLog(`command: ${cmd}`, 'cmd');
+        switch(cmd) {
+            case '/ping':
+                addLog(`🏓 Pong! ${Math.floor(Math.random()*30+15)}ms · heartbeat stable`, 'success');
+                break;
+            case '/quote':
+                const qs = ['“Stay curious, keep building.” ✨','“Code is poetry in motion.” 🚀','“Great bots are built with care.” 💙','“Every command counts.” ⚡'];
+                addLog(`📖 ${qs[Math.floor(Math.random()*qs.length)]}`, 'success');
+                break;
+            case '/profile':
+                addLog(`👤 @AuroraDemo#4220 · joined Jan 2025 · roles: @Mod, @Music`, 'info');
+                break;
+            case '/poll':
+                addLog(`📊 poll: “favorite feature?” — options: Mod / Music / AI · voting open`, 'success');
+                break;
+            case '/help':
+                addLog(`📚 available: /ping, /quote, /profile, /poll, /help · try them!`, 'success');
+                break;
+            default: addLog(`unknown command — try /help`, 'info');
         }
+        if (cmdCounter === 5) addLog(`🏅 achievement: "command explorer"`, 'success');
+        if (cmdCounter === 10) addLog(`🎉 you're a power user! thanks for testing`, 'success');
+        updateActivity();
+    }
 
-        // Initialize counters when page loads
-        window.addEventListener('load', animateCounters);
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    document.querySelector('nav ul').classList.remove('active');
-                }
-            });
+    // attach command buttons
+    document.querySelectorAll('.cmd-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const c = btn.getAttribute('data-cmd');
+            if (c) runCommand(c);
         });
-    </script>
-</body>
+    });
 
+    // volume slider
+    const volSlider = document.getElementById('volumeSlider');
+    const volDisplay = document.getElementById('volDisplay');
+    volSlider.addEventListener('input', function() {
+        const val = this.value;
+        volDisplay.textContent = val + '%';
+        addLog(`🎧 volume set to ${val}% (simulated)`, 'system');
+        if (val == 100) addLog(`🔊 max volume — bass boost!`, 'success');
+        if (val == 0) addLog(`🔇 muted — voice channel silent`, 'info');
+    });
+
+    // toggles
+    document.getElementById('welcomeToggle').addEventListener('change', function(e) {
+        addLog(`🛎️ auto‑greeting ${e.target.checked ? 'enabled' : 'disabled'}`, 'system');
+    });
+    document.getElementById('aiToggle').addEventListener('change', function(e) {
+        addLog(`🧠 AI responses ${e.target.checked ? 'activated' : 'deactivated'}`, 'system');
+    });
+
+    // random command
+    document.getElementById('randomCmdBtn').addEventListener('click', () => {
+        const pool = ['/ping','/quote','/profile','/poll','/help'];
+        runCommand(pool[Math.floor(Math.random() * pool.length)]);
+    });
+
+    // simulate join
+    document.getElementById('simulateJoinBtn').addEventListener('click', () => {
+        const names = ['Luna', 'Kael', 'Mira', 'Jax', 'Nyx'];
+        const name = names[Math.floor(Math.random() * names.length)];
+        addLog(`👋 ${name} joined the server!`, 'info');
+        const welcomeOn = document.getElementById('welcomeToggle').checked;
+        if (welcomeOn) addLog(`💬 welcome message sent to #general`, 'success');
+        // update stats
+        let g = document.getElementById('guildCount');
+        let currentG = parseInt(g.textContent) || 413;
+        if (Math.random() > 0.75) {
+            g.textContent = currentG + 1;
+            addLog(`✨ bot joined a new guild! now at ${g.textContent} servers`, 'success');
+        }
+        let u = document.getElementById('userCount');
+        let raw = parseFloat(u.textContent.replace('K','')) || 78.2;
+        let newU = (raw + 0.1).toFixed(1);
+        u.textContent = newU + 'K';
+        addLog(`📈 user count updated: ${newU}K`, 'info');
+        updateActivity();
+    });
+
+    // activity score
+    function updateActivity() {
+        const scoreSpan = document.getElementById('scoreDisplay');
+        const prog = document.getElementById('activityProgress');
+        let current = parseInt(scoreSpan.textContent) || 37;
+        let inc = Math.floor(Math.random() * 4) + 1;
+        let newScore = Math.min(current + inc, 100);
+        scoreSpan.textContent = newScore;
+        prog.value = newScore;
+        if (newScore === 100) addLog(`🏆 activity score maxed! legendary bot status`, 'success');
+    }
+
+    // initial ambient log
+    window.addEventListener('load', () => {
+        addLog('✨ Aurora dashboard active — try the controls', 'system');
+    });
+</script>
+</body>
 </html>
